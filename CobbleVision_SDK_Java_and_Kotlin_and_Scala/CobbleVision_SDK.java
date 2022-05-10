@@ -68,7 +68,7 @@ public class CobbleVisionAPI{
   // # @returns {Response} This return the UploadMediaResponse as HttpEntity. The body is in JSON format.
 
   @Async
-  public CompletableFuture <HTTPEntity> uploadMediaFileAsync(String price_category, Boolean publicBool, String name, String[] tags, BufferedImage file) throws InterruptedException{
+  public HTTPEntity uploadMediaFileAsync(String price_category, Boolean publicBool, String name, String[] tags, BufferedImage file) throws InterruptedException{
     try{
       private String endpoint = "media"
       
@@ -123,7 +123,7 @@ public class CobbleVisionAPI{
         System.out.println(EntityUtils.toString(response.getEntity());)
       }
       
-      return CompletableFuture.completeFuture(postEntity);
+      return postEntity;
     }catch e as Exception{
     
       if(GlobalVars.debugging){
@@ -141,7 +141,7 @@ public class CobbleVisionAPI{
   // # @returns {Response} This return the DeleteMediaResponse. The body is in JSON format.
 
 @Async
-  public CompletableFuture <HTTPEntity> deleteMediaFileAsync(String[] IDArray) throws InterruptedException{
+  public HTTPEntity deleteMediaFileAsync(String[] IDArray) throws InterruptedException{
     try{
       private String endpoint = "media"
       
@@ -189,7 +189,7 @@ public class CobbleVisionAPI{
         System.out.println(EntityUtils.toString(response.getEntity());)
       }
       
-      return CompletableFuture.completeFuture(deleteEntity);
+      return deleteEntity;
     }catch e as Exception{
     
       if(GlobalVars.debugging){
@@ -210,7 +210,7 @@ public class CobbleVisionAPI{
   // # @returns {Response} This returns the LaunchCalculationResponse. The body is in JSON format.  
 
   @Async
-  public CompletableFuture <HTTPEntity> launchCalculationAsync(String[] algorithms, String[] media, String type, String notificationURL) throws InterruptedException{
+  public HTTPEntity launchCalculationAsync(String[] algorithms, String[] media, String type, String notificationURL) throws InterruptedException{
     try{
       private String endpoint = "calculation"
       
@@ -258,7 +258,7 @@ public class CobbleVisionAPI{
      
       private ClosableHTTPClient client = HttpClients.createDefault();
       private HTTPPost httpPost = new HttpPost(this.baseURL+endpoint)
-      private StringEntity entity = new StringEntitty(jsonString)
+      private StringEntity entity = new StringEntity(jsonString)
       httpPost.setEntity(entity)
       httpPost.setHeader("Accept", "application/json")
       httpPost.setHeader("Content-Type", "application/json")
@@ -273,7 +273,7 @@ public class CobbleVisionAPI{
         System.out.println(EntityUtils.toString(response.getEntity());)
       }
       
-      return CompletableFuture.completeFuture(postEntity);
+      return postEntity;
     }catch e as Exception{
     
       if(GlobalVars.debugging){
@@ -291,7 +291,7 @@ public class CobbleVisionAPI{
   // # @returns {Response} This returns the WaitForCalculationResponse. The body is in JSON format.   
 
 @Async
-  public CompletableFuture <HTTPEntity> waitForCalculationCompletion(String[] calculationIDArray) throws InterruptedException{
+  public HTTPEntity waitForCalculationCompletion(String[] calculationIDArray) throws InterruptedException{
     try{
       private String endpoint = "calculation"
       
@@ -366,7 +366,7 @@ public class CobbleVisionAPI{
           System.out.println(EntityUtils.toString(response.getEntity());)
         }
       
-        return CompletableFuture.completeFuture(getEntity);
+        return getEntity;
     }catch e as Exception{
     
       if(GlobalVars.debugging){
@@ -384,7 +384,7 @@ public class CobbleVisionAPI{
   // # @returns {Response} This returns the DeleteCalculationResponse. The body is in JSON format.
   
 @Async
-  public CompletableFuture <HTTPEntity> deleteCalculation(String[] IDArray) throws InterruptedException{
+  public HTTPEntity deleteCalculation(String[] IDArray) throws InterruptedException{
     try{
       private String endpoint = "calculation"
       
@@ -432,7 +432,7 @@ public class CobbleVisionAPI{
         System.out.println(EntityUtils.toString(response.getEntity());)
       }
       
-      return CompletableFuture.completeFuture(deleteEntity);
+      return deleteEntity;
     }catch e as Exception{
     
       if(GlobalVars.debugging){
@@ -451,7 +451,7 @@ public class CobbleVisionAPI{
   // # @returns {Response} This returns the GetCalculationResult. The body is in json format.
 
 @Async
-  public CompletableFuture <HTTPEntity> getCalculationResult(String[] IDArray, Boolean returnOnlyStatusBool) throws InterruptedException{
+  public HTTPEntity getCalculationResult(String[] IDArray, Boolean returnOnlyStatusBool) throws InterruptedException{
     try{
       private String endpoint = "calculation"
       
@@ -499,7 +499,7 @@ public class CobbleVisionAPI{
         System.out.println(EntityUtils.toString(response.getEntity());)
       }
       
-      return CompletableFuture.completeFuture(getEntity);
+      return getEntity;
     }catch e as Exception{
     
       if(GlobalVars.debugging){
@@ -520,7 +520,7 @@ public class CobbleVisionAPI{
   // # @returns {Response} This returns the GetCalculationVisualization Result. The body is in binary format.
 
   @Async
-  public CompletableFuture <HTTPEntity> getCalculationVisualization(String id, Boolean returnBase64Bool, Integer width, Integer height) throws InterruptedException{
+  public HTTPEntity getCalculationVisualization(String id, Boolean returnBase64Bool, Integer width, Integer height) throws InterruptedException{
     try{
       private String endpoint = "calculation/visualization"
       
@@ -563,7 +563,7 @@ public class CobbleVisionAPI{
         System.out.println(EntityUtils.toString(response.getEntity());)
       }
       
-      return CompletableFuture.completeFuture(getEntity);
+      return getEntity;
     }catch e as Exception{
     
       if(GlobalVars.debugging){
